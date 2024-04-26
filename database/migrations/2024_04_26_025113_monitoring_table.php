@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('monitoring_table', function (Blueprint $table) {
+            $table->bigIncrements('monitoring_id');
+            $table->integer('project_id');
+            $table->string('activity');
+            $table->dateTime('date_of_monitoring', precision: 0);
+        });
     }
 
     /**
@@ -19,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::drop('monitoring_table');
     }
 };
